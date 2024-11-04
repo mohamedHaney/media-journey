@@ -11,7 +11,7 @@ import path from 'path';
 dotenv.config();
 
 mongoose
-  .connect(process.env.MONGO)
+  .connect("mongodb+srv://mohaney:rFeCkyIRDqXEouQ5@mern-estate.z4sxtjg.mongodb.net/?retryWrites=true&w=majority&appName=mern-estate")
   .then(() => {
     console.log('connected to MongoDb');
   })
@@ -43,7 +43,7 @@ app.get('*', (req, res) => {
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
-  const message = err.message || 'خطا في الخادم الداخلي';
+  const message = err.message || 'internal server error';
   res.status(statusCode).json({
     success: false,
     statusCode,

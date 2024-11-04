@@ -14,7 +14,7 @@ export const signup = async (req, res, next) => {
     email === '' ||
     password === ''
   ) {
-    next(errorHandler(400, 'جميع الحقول مطلوبة'));
+    next(errorHandler(400, 'All fields are required'));
   }
 
   const hashedPassword = bcryptjs.hashSync(password, 10);
@@ -27,7 +27,7 @@ export const signup = async (req, res, next) => {
 
   try {
     await newUser.save();
-    res.json('تم إنشاء حساب بنجاح');
+    res.json('Signup successful');
   } catch (error) {
     next(error);
   }
@@ -37,21 +37,21 @@ export const signin = async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password || email === '' || password === '') {
-    next(errorHandler(400, 'جميع الحقول مطلوبة'));
+    next(errorHandler(400, 'All fields are required'));
   }
 
   try {
     const validUser = await User.findOne({ email });
     if (!validUser) {
-      return next(errorHandler(404, 'المستخدم غير موجود'));
+      return next(errorHandler(404, 'User not found'));
     }
     const validPassword = bcryptjs.compareSync(password, validUser.password);
     if (!validPassword) {
-      return next(errorHandler(400, 'كلمة مرور خاطئة'));
+      return next(errorHandler(400, 'Invalid password'));
     }
     const token = jwt.sign(
       { id: validUser._id, isAdmin: validUser.isAdmin },
-      process.env.JWT_SECRET
+      "mohamed123456789"
     );
 
     const { password: pass, ...rest } = validUser._doc;
@@ -74,7 +74,7 @@ export const google = async (req, res, next) => {
     if (user) {
       const token = jwt.sign(
         { id: user._id, isAdmin: user.isAdmin },
-        process.env.JWT_SECRET
+        "mohamed123456789"
       );
       const { password, ...rest } = user._doc;
       res
@@ -99,7 +99,7 @@ export const google = async (req, res, next) => {
       await newUser.save();
       const token = jwt.sign(
         { id: newUser._id, isAdmin: newUser.isAdmin },
-        process.env.JWT_SECRET
+        "mohamed123456789"
       );
       const { password, ...rest } = newUser._doc;
       res
