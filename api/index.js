@@ -7,6 +7,7 @@ import postRoutes from './routes/post.route.js';
 import commentRoutes from './routes/comment.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -22,6 +23,11 @@ mongoose
 const __dirname = path.resolve();
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow only your frontend's origin
+  credentials: true, // Include cookies if needed
+}));
 
 app.use(express.json());
 app.use(cookieParser());
