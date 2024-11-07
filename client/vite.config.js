@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://newmedia-yn8z2jib.b4a.run',
+        target: 'https://mediajourney1-holewhpc.b4a.run',
         secure: false,
       },
     },
