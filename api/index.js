@@ -28,6 +28,7 @@ app.use(cors({
   origin: 'https://media-journey.vercel.app',
 }));
 
+
 app.use(express.json());
 app.use(cookieParser());
 
