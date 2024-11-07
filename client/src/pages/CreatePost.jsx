@@ -73,6 +73,7 @@ export default function CreatePost() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+        credentials: 'include', // Important: ensures cookies are sent with the request
       });
       const data = await res.json();
       if (!res.ok) {
