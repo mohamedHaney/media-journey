@@ -24,20 +24,20 @@ const __dirname = path.resolve();
 
 const app = express();
 
-// app.use(cors({
-//   origin: 'https://media-journey.vercel.app', // Allow only your frontend's origin
-//   credentials: true, // Include cookies if needed
-// }));
+app.use(cors({
+  origin: 'https://media-journey.vercel.app', // Allow only your frontend's origin
+  credentials: true, // Include cookies if needed
+}));
 
 
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  origin: "http://localhost:5173",
-  methods: ["POST", "GET" , "PUT" , "DELETE"],
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: "http://localhost:5173",
+//   methods: ["POST", "GET" , "PUT" , "DELETE"],
+//   credentials: true,
+// }));
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000!');
