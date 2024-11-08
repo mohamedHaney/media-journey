@@ -24,12 +24,16 @@ const __dirname = path.resolve();
 
 const app = express();
 
+// app.use(cors({
+//   origin: 'https://media-journey.vercel.app', // Allow only your frontend's origin
+//   credentials: true, // Include cookies if needed
+// }));
+
 app.use(cors({
-  origin: 'https://media-journey.vercel.app', // Allow only your frontend's origin
-  credentials: true, // Include cookies if needed
+  origin: [""],
+  methods: ["POST", "GET"],
+  credentials: true
 }));
-
-
 
 app.use(express.json());
 app.use(cookieParser());
