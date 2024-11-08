@@ -30,7 +30,7 @@ const app = express();
 // }));
 
 app.use(cors({
-  origin: [""],
+  origin: ["https://media-journey.vercel.app"],
   methods: ["POST", "GET"],
   credentials: true
 }));
