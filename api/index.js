@@ -29,14 +29,15 @@ const app = express();
 //   credentials: true, // Include cookies if needed
 // }));
 
-app.use(cors({
-  origin: "https://media-journey.vercel.app",
-  methods: ["POST", "GET"],
-  credentials: true
-}));
+
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+  origin: "https://media-journey.vercel.app",
+  methods: ["POST", "GET" , "PUT" , "DELETE"],
+  credentials: true,
+}));
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000!');
