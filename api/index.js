@@ -25,7 +25,7 @@ const __dirname = path.resolve();
 const app = express();
 
 app.use(cors({
-  origin: 'https://media-journey.vercel.app', // Allow only your frontend's origin
+  origin: 'https://media-journey-6pl4.vercel.app', // Allow only your frontend's origin
   credentials: true, // Include cookies if needed
 }));
 
